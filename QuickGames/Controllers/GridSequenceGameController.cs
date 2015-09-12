@@ -1,4 +1,5 @@
-﻿using QuickGames.Models;
+﻿using Services;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,18 @@ namespace QuickGames.Controllers
 {
     public class GridSequenceGameController : ApiController
     {
+        private ISequencedGridService sequencedGridService;
+
+        public GridSequenceGameController(ISequencedGridService sequencedGridService)
+        {
+            this.sequencedGridService = sequencedGridService;
+        }
+
         public GameGrid GetNewGrid()
         {
-            return new GameGrid();
+            var gameGrid = sequencedGridService.Create();
+            return gameGrid;
+
         }
     }
 }
