@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
-namespace Services.Models
+namespace QuickGames.Services.Models
 {
     public class GameGrid
     {
@@ -19,5 +19,6 @@ namespace Services.Models
     public class Cell
     {
         public int Id { get; set; }
+        public int Value { get; set; }
     }
 }

@@ -114,9 +114,9 @@
       <Project>{FF3142D8-3576-4C95-96FF-A2FC2FB6A46F}</Project>
       <Name>QuickGames</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\QuickGames.Services.csproj">
       <Project>{e37d83fc-536c-4e56-955e-d0d6f90eeb1b}</Project>
-      <Name>Services</Name>
+      <Name>QuickGames.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

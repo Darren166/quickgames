@@ -10,7 +10,7 @@ namespace QuickGames.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Services;
+    using QuickGames.Services;
 
     public static class NinjectWebCommon 
     {

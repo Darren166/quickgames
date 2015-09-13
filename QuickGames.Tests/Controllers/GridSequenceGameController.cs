@@ -9,8 +9,8 @@ using QuickGames;
 using QuickGames.Controllers;
 using FluentAssertions;
 using QuickGames.Tests.Builders;
-using Services.Models;
-using Services;
+using QuickGames.Services.Models;
+using QuickGames.Services;
 
 namespace QuickGames.Tests.Controllers
 {
@@ -50,7 +50,19 @@ namespace QuickGames.Tests.Controllers
                 .WithCell(new CellBuilder().WithId(7))
                 .WithCell(new CellBuilder().WithId(8))
                 .WithCell(new CellBuilder().WithId(9));
-            gameGrid.Cells.ShouldBeEquivalentTo(expectedGrid.Cells);
+            gameGrid.Cells.ShouldAllBeEquivalentTo(expectedGrid.Cells,options=>options.Including(g=>g.Id));
+       }
+
+        [TestMethod]
+        public void Get_New_Game_Returns_Correctly_Sequenced_Values() {
+            // Given a request for a grid sequence game
+            GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
+
+            // When a new grid is requested
+            GameGrid gameGrid = controller.GetNewGrid();
+
+            // Then the ordered values correspond to the sequence
+            gameGrid.Cells.OrderBy(cell=>cell.Value).Should().BeInAscendingOrder(cell=>cell.Id);
         }
     }
 }

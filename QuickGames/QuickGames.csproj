@@ -224,9 +224,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\QuickGames.Services.csproj">
       <Project>{e37d83fc-536c-4e56-955e-d0d6f90eeb1b}</Project>
-      <Name>Services</Name>
+      <Name>QuickGames.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

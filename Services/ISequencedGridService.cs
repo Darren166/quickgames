@@ -1,8 +1,8 @@
 ﻿using System;
-namespace Services
+namespace QuickGames.Services
 {
     public interface ISequencedGridService
     {
-        Services.Models.GameGrid Create();
+        QuickGames.Services.Models.GameGrid Create();
     }
 }
