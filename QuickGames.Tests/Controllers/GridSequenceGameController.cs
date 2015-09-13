@@ -31,7 +31,7 @@ namespace QuickGames.Tests.Controllers
         }
 
         [TestMethod]
-        public void Get_New_Game_Returns_Grid_That_Has_Fully_Sequenced_Cells()
+        public void Get_New_Game_Returns_Grid_That_Has_Sequenced_Cells()
         {
             // Given a request for a grid sequence game
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
@@ -63,6 +63,18 @@ namespace QuickGames.Tests.Controllers
 
             // Then the ordered values correspond to the sequence
             gameGrid.Cells.OrderBy(cell=>cell.Value).Should().BeInAscendingOrder(cell=>cell.Id);
+        }
+
+        [TestMethod]
+        public void Get_New_game_Returns_Randomised_Sequence() {
+            // Given a request for a grid sequence game
+            GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
+
+            // When a new grid is requested
+            GameGrid gameGrid = controller.GetNewGrid();
+
+            // Then the cell Ids are not in order
+            gameGrid.Cells.Select(cell=>cell.Id).Should().NotBeAscendingInOrder();
         }
     }
 }

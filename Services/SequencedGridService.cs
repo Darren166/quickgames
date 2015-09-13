@@ -19,6 +19,7 @@ namespace QuickGames.Services
                 cellIndex++;
                 gameGrid.Cells.Add(new Cell { Id = cellIndex, Value = item });
             }
+            gameGrid.Cells = gameGrid.Cells.OrderBy(guid => Guid.NewGuid()).ToList();
             return gameGrid;
         }
     }
