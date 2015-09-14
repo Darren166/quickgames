@@ -36,8 +36,8 @@ namespace QuickGames.Tests.Controllers
             // Given a request for a grid sequence game
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
-            // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid(0,0);
+            // When a new grid is requested with 3 rows and 3 columns
+            GameGrid gameGrid = controller.GetNewGrid(3,3);
 
             // Then all sequence numbers are present and correct
             GameGrid expectedGrid = new GameGridBuilder()
@@ -58,8 +58,8 @@ namespace QuickGames.Tests.Controllers
             // Given a request for a grid sequence game
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
-            // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid(0,0);
+            // When a new grid is requested with 4 rows and 5 columns
+            GameGrid gameGrid = controller.GetNewGrid(4,5);
 
             // Then the ordered values correspond to the sequence
             gameGrid.Cells.OrderBy(cell=>cell.Value).Should().BeInAscendingOrder(cell=>cell.Id);
@@ -70,8 +70,8 @@ namespace QuickGames.Tests.Controllers
             // Given a request for a grid sequence game
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
-            // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid(0,0);
+            // When a new grid is requested with 6 rows and 3 columns
+            GameGrid gameGrid = controller.GetNewGrid(6,3);
 
             // Then the cell Ids are not in order
             gameGrid.Cells.Select(cell=>cell.Id).Should().NotBeAscendingInOrder();
