@@ -15,7 +15,7 @@ using QuickGames.Services;
 namespace QuickGames.Tests.Controllers
 {
 	[TestClass]
-	public class GridSequenceGameControllerTest
+	public class GridSequenceGameControllerTests
 	{
 		[TestMethod]
 		public void Get_New_Game_Returns_Grid_Of_Correct_Size()
@@ -36,12 +36,12 @@ namespace QuickGames.Tests.Controllers
 			// Given a request for a grid sequence game
 			GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
-			// When a new grid is requested with 3 rows and 3 columns
-			GameGrid gameGrid = controller.GetNewGrid(3, 3);
+			// When a new grid is requested with 2 rows and 2 columns
+			GameGrid gameGrid = controller.GetNewGrid(2, 2);
 
 			// Then all sequence numbers are present and correct
-			GameGrid expectedGrid = new GameGridBuilder(rows: 3, columns: 3);
-			gameGrid.Cells.ShouldAllBeEquivalentTo(expectedGrid.Cells, options => options.Including(g => g.Id));
+			List<Cell> expectedCells = new List<Cell> { new CellBuilder().WithId(1), new CellBuilder().WithId(2), new CellBuilder().WithId(3), new CellBuilder().WithId(4) };
+			gameGrid.Cells.ShouldAllBeEquivalentTo(expectedCells, options => options.Including(g => g.Id));
 		}
 
 		[TestMethod]

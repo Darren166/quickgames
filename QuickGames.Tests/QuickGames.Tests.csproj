@@ -99,7 +99,7 @@
   <ItemGroup>
     <Compile Include="Builders\GameGridBuilder.cs" />
     <Compile Include="Builders\GameGridBuilderTests.cs" />
-    <Compile Include="Controllers\GridSequenceGameController.cs" />
+    <Compile Include="Controllers\GridSequenceGameControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
