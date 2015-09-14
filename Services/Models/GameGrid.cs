@@ -15,9 +15,9 @@ namespace QuickGames.Services.Models
 			Cells = CreateDefaultCells(rows, columns);
 		}
 
-		public IList<Cell> Cells { get; set; }
-		public int NumberOfRows { get; set; }
-		public int NumberOfColumns { get; set; }
+		public IList<Cell> Cells { get; private set; }
+		public int NumberOfRows { get; private set; }
+		public int NumberOfColumns { get; private set; }
 		public int NumberOfCells { get { return NumberOfRows * NumberOfColumns; } }
 
 		public void PopulateCellValues(int[] orderedValues)

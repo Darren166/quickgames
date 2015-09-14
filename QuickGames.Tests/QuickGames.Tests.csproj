@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\GameGridBuilder.cs" />
+    <Compile Include="Builders\GameGridBuilderTests.cs" />
     <Compile Include="Controllers\GridSequenceGameController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />

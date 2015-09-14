@@ -10,9 +10,9 @@ namespace QuickGames.Tests.Builders
     class GameGridBuilder
     {
         private GameGrid gameGrid;
-        public GameGridBuilder()
+        public GameGridBuilder(int rows, int columns)
         {
-            this.gameGrid = new GameGrid(0,0);
+            this.gameGrid = new GameGrid(rows,columns);
         }
 
         public static implicit operator GameGrid(GameGridBuilder builder)
@@ -20,31 +20,31 @@ namespace QuickGames.Tests.Builders
             return builder.gameGrid;
         }
 
-        public GameGridBuilder WithCell(Cell cell)
-        {
-            this.gameGrid.Cells.Add(cell);
-            return this;
-        }
+	//	public GameGridBuilder WithCell(Cell cell)
+	//	{
+	//		this.gameGrid.Cells.Add(cell);
+	//		return this;
+	//	}
 
-    }
+	//}
 
-    class CellBuilder
-    {
-        private Cell cell;
-        public CellBuilder()
-        {
-            this.cell = new Cell();
-        }
+	//class CellBuilder
+	//{
+	//	private Cell cell;
+	//	public CellBuilder()
+	//	{
+	//		this.cell = new Cell();
+	//	}
 
-        public static implicit operator Cell(CellBuilder builder)
-        {
-            return builder.cell;
-        }
+	//	public static implicit operator Cell(CellBuilder builder)
+	//	{
+	//		return builder.cell;
+	//	}
 
-        public CellBuilder WithId(int id)
-        {
-            cell.Id = id;
-            return this;
-        }
-    }
+	//	public CellBuilder WithId(int id)
+	//	{
+	//		cell.Id = id;
+	//		return this;
+	//	}
+	}
 }
