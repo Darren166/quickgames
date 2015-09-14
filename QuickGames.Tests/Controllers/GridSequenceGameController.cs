@@ -23,11 +23,11 @@ namespace QuickGames.Tests.Controllers
             // Given a request for a grid sequence game
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
-            // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid();
+            // When a new grid is requested that has 3 rows and 4 columns
+            GameGrid gameGrid = controller.GetNewGrid(3,4);
 
-            // Then it has 9 cells
-            Assert.AreEqual(9,gameGrid.Cells.Count);
+            // Then it has 12 cells
+            Assert.AreEqual(12,gameGrid.Cells.Count);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace QuickGames.Tests.Controllers
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
             // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid();
+            GameGrid gameGrid = controller.GetNewGrid(0,0);
 
             // Then all sequence numbers are present and correct
             GameGrid expectedGrid = new GameGridBuilder()
@@ -59,7 +59,7 @@ namespace QuickGames.Tests.Controllers
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
             // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid();
+            GameGrid gameGrid = controller.GetNewGrid(0,0);
 
             // Then the ordered values correspond to the sequence
             gameGrid.Cells.OrderBy(cell=>cell.Value).Should().BeInAscendingOrder(cell=>cell.Id);
@@ -71,10 +71,24 @@ namespace QuickGames.Tests.Controllers
             GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
 
             // When a new grid is requested
-            GameGrid gameGrid = controller.GetNewGrid();
+            GameGrid gameGrid = controller.GetNewGrid(0,0);
 
             // Then the cell Ids are not in order
             gameGrid.Cells.Select(cell=>cell.Id).Should().NotBeAscendingInOrder();
         }
+
+        [TestMethod]
+        public void Get_New_Game_Returns_Correct_Number_of_Rows_And_Columns() {
+            // Given a request for a grid sequence game
+            GridSequenceGameController controller = new GridSequenceGameController(new SequencedGridService());
+
+            // When a new grid is requested with 3 rows and 4 columns
+            GameGrid gameGrid = controller.GetNewGrid(3,4);
+
+            // Then we get 3 rows and 4 columns
+            gameGrid.NumberOfRows.Should().Be(3);
+            gameGrid.NumberOfColumns.Should().Be(4);
+        }
+
     }
 }

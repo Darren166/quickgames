@@ -9,18 +9,15 @@ namespace QuickGames.Services
 {
     public class SequencedGridService : ISequencedGridService 
     {
-        public GameGrid Create(){
-            GameGrid gameGrid = new GameGrid();
-            var sequence = Enumerable.Range(1, 9).ToArray();
+        public GameGrid Create(int rows, int columns){
+            GameGrid gameGrid = new GameGrid(rows, columns);
 
-            var cellIndex = 0;
-            foreach (var item in sequence)
-            {
-                cellIndex++;
-                gameGrid.Cells.Add(new Cell { Id = cellIndex, Value = item });
-            }
-            gameGrid.Cells = gameGrid.Cells.OrderBy(guid => Guid.NewGuid()).ToList();
-            return gameGrid;
+			var sequence = Enumerable.Range(1, gameGrid.NumberOfCells).ToArray();
+
+			gameGrid.PopulateCellValues(sequence);
+			gameGrid.RandomiseCells();
+            
+			return gameGrid;
         }
     }
 }

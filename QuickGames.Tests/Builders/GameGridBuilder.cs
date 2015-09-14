@@ -12,7 +12,7 @@ namespace QuickGames.Tests.Builders
         private GameGrid gameGrid;
         public GameGridBuilder()
         {
-            this.gameGrid = new GameGrid();
+            this.gameGrid = new GameGrid(0,0);
         }
 
         public static implicit operator GameGrid(GameGridBuilder builder)
