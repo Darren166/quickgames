@@ -10,7 +10,7 @@ namespace QuickGames.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using QuickGames.Services;
+	using QuickGames.Services;
 
     public static class NinjectWebCommon 
     {
@@ -62,7 +62,7 @@ namespace QuickGames.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ISequencedGridService>().To<SequencedGridService>();
+			kernel.Bind<ISequencedGridService>().To<SequencedGridService>();
         }        
     }
 }

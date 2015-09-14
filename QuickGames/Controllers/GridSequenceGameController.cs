@@ -18,7 +18,7 @@ namespace QuickGames.Controllers
             this.sequencedGridService = sequencedGridService;
         }
 
-        public GameGrid GetNewGrid(int rows, int columns)
+        public GameGrid GetNewGrid(int rows=3, int columns=3)
         {
             var gameGrid = sequencedGridService.Create(rows, columns);
             return gameGrid;
