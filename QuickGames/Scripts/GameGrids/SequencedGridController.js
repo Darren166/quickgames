@@ -3,11 +3,19 @@
 (function () {
 	"use strict";
 
-	var sequencedGridController = function ($http) {
+	var sequencedGridController = function ($http, $timeout) {
 
 		var gridViewModel = this;
+		gridViewModel.gameInProgress = false;
 
-		var getCellById = function(id){
+		var updateElapsedTime = function () {
+			if (gridViewModel.gameInProgress) {
+				gridViewModel.elapsedTime = new Date().getTime() - gridViewModel.startTime;
+				$timeout(updateElapsedTime, 10);
+			}
+		}
+
+		var getCellById = function (id) {
 			for (var index = 0; index < gridViewModel.grid.Cells.length; index++) {
 				if (gridViewModel.grid.Cells[index].Id === id) {
 					return gridViewModel.grid.Cells[index];
@@ -18,9 +26,17 @@
 
 		gridViewModel.onCellClicked = function (cell) {
 			if (cell == gridViewModel.expectedCell) {
+				cell.completed = true;
 				gridViewModel.expectedCell = getCellById(cell.Id + 1);
 			}
-			
+			if (cell.Id == 1) {
+				gridViewModel.startTime = new Date().getTime();
+				gridViewModel.gameInProgress = true;
+				$timeout(updateElapsedTime, 500);
+			}
+			if (!gridViewModel.expectedCell) {
+				gridViewModel.gameInProgress = false;
+			}
 		}
 
 		var onGotGrid = function (response) {
@@ -29,7 +45,7 @@
 			gridViewModel.expectedCell = getCellById(1);
 		}
 
-		$http.get("http://localhost:53246/api/GridSequenceGame?rows=4&columns=4").then(onGotGrid);
+		$http.get("http://localhost:53246/api/GridSequenceGame?rows=3&columns=3").then(onGotGrid);
 	};
 
 	angular.module('gameGrid').controller('sequencedGridController', sequencedGridController);
