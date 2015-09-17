@@ -1,7 +1,7 @@
 ﻿<div ng-app="gameGrid" ng-controller="sequencedGridController as gridViewModel">
 	<span ng-if="gridViewModel.expectedCell">Currently looking for: {{gridViewModel.expectedCell.Value}}</span>
 	<span ng-if="!gridViewModel.expectedCell">Congratulations! You took  {{gridViewModel.elapsedTime | date:':mm:ss:sss'}} seconds - {{gridViewModel.elapsedTime}} ms</span>
-	<h3>Timer: {{gridViewModel.elapsedTime | date:'mm:ss:sss'}}</h3>
+	<ng-timer milliseconds-since-start="gridViewModel.elapsedTime" start-timer="gridViewModel.gameInProgress"></ng-timer>
 	<div>
 		<table style="border-collapse: separate; border-spacing: 5px;">
 			<tr ng-repeat="row in gridViewModel.grid.rows">

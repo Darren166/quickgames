@@ -8,13 +8,6 @@
 		var gridViewModel = this;
 		gridViewModel.gameInProgress = false;
 
-		var updateElapsedTime = function () {
-			if (gridViewModel.gameInProgress) {
-				gridViewModel.elapsedTime = new Date().getTime() - gridViewModel.startTime;
-				$timeout(updateElapsedTime, 10);
-			}
-		}
-
 		var getCellById = function (id) {
 			for (var index = 0; index < gridViewModel.grid.Cells.length; index++) {
 				if (gridViewModel.grid.Cells[index].Id === id) {
@@ -48,5 +41,33 @@
 		$http.get("http://localhost:53246/api/GridSequenceGame?rows=3&columns=3").then(onGotGrid);
 	};
 
-	angular.module('gameGrid').controller('sequencedGridController', sequencedGridController);
+	angular.module('gameGrid')
+		.controller('sequencedGridController', sequencedGridController)
+		.directive('ngTimer', function () {
+			return {
+				restrict: 'E',
+				require: '^millisecondsSinceStart',
+				scope: {
+					millisecondsSinceStart: '=',
+					startTimer: '='
+				},
+				template: "<h3>Timer: {{millisecondsSinceStart | date:'mm:ss:sss'}}</h3>",
+
+				controller: function ($scope, $timeout) {
+					$scope.updateElapsedTime = function () {
+						if ($scope.startTimer) {
+							$scope.millisecondsSinceStart = new Date().getTime() - $scope.startTime;
+							$timeout($scope.updateElapsedTime, 10);
+						}
+					}
+
+					$scope.$watch('startTimer', function (startTimer) {
+						if (startTimer) {
+							$scope.startTime = new Date().getTime();
+							$timeout($scope.updateElapsedTime, 10);
+						}
+					});
+				}
+			}
+		});;
 }());
