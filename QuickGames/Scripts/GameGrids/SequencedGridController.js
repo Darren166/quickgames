@@ -36,7 +36,7 @@
 			gameModel.expectedCell = getCellById(1);
 		}
 
-		$http.get("http://localhost:53246/api/GridSequenceGame?rows=3&columns=3").then(onGotGrid);
+		$http.get("http://localhost:53246/api/GridSequenceGame?rows=4&columns=5").then(onGotGrid);
 	};
 
 	angular.module('gameGrid')
