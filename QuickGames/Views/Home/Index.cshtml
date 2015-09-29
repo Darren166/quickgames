@@ -1,10 +1,14 @@
 ﻿<div ng-app="gameGrid" ng-controller="sequencedGridController as gridViewModel" style="height:100%">
-	<div style="height:20%">
-		<span ng-if="gridViewModel.expectedCell">Currently looking for: {{gridViewModel.expectedCell.Value}}</span>
-		<span ng-if="!gridViewModel.expectedCell">Congratulations! You took  {{gridViewModel.elapsedTime | date:':mm:ss:sss'}} seconds - {{gridViewModel.elapsedTime}} ms</span>
-		<cg-timer milliseconds-since-start="gridViewModel.elapsedTime" run-timer="gridViewModel.gameInProgress"></cg-timer>
+	<div style="height:10%">
+		<div class="gridMessage">
+			<span ng-if="gridViewModel.expectedCell">Currently looking for: {{gridViewModel.expectedCell.Value}}</span>
+			<span ng-if="!gridViewModel.expectedCell">Congratulations! You took  {{gridViewModel.elapsedTime | date:':mm:ss:sss'}} seconds - {{gridViewModel.elapsedTime}} ms</span>
+		</div>
+		<div class="timer">
+			<cg-timer milliseconds-since-start="gridViewModel.elapsedTime" run-timer="gridViewModel.gameInProgress" ng-if="gridViewModel.gameInProgress"></cg-timer>
+		</div>
 	</div>
-	<div style="height:80%;">
+	<div style="height:90%;">
 		<table class="gameGrid">
 			<tr ng-repeat="row in gridViewModel.grid.rows">
 				<td ng-repeat="cell in row" style="height:{{ 100 / gridViewModel.grid.rows.length }}%; width:{{ 100 / row.length }}%;" class="gameCell" ng-click="gridViewModel.onCellClicked(cell)" ng-class="cell.completed ? 'btn-success' : 'btn-primary'">

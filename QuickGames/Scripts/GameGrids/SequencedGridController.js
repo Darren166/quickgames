@@ -48,7 +48,7 @@
 					millisecondsSinceStart: '=',
 					runTimer: '='
 				},
-				template: "<h3>Timer: {{millisecondsSinceStart | date:'mm:ss:sss'}}</h3>",
+				template: "Timer: {{millisecondsSinceStart | date:'mm:ss:sss'}}",
 
 				link: function (scope) {
 

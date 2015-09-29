@@ -48,8 +48,26 @@
 	font-size: 4vw;
 }
 
+.gridMessage {
+	font-size: 2vw;
+	float:right;
+}
+
+.timer {
+	font-size: 2vw;
+	float:left;
+}
+
 @media only screen and (max-width: 1020px) {
 	.gameCell {
 		font-size: 7vw;
+	}
+
+	.gridMessage {
+		font-size: 4vw;
+	}
+
+	.timer {
+		font-size: 4vw;
 	}
 }
