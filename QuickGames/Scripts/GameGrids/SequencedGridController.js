@@ -36,7 +36,7 @@
 			gameModel.expectedCell = getCellById(1);
 		}
 
-		$http.get("http://quickgames.azurewebsites.net/api/GridSequenceGame?rows=5&columns=4").then(onGotGrid);
+		$http.get("/api/GridSequenceGame?rows=5&columns=4").then(onGotGrid);
 	};
 
 	angular.module('gameGrid')
