@@ -7,8 +7,8 @@
 	<div style="height:80%;">
 		<table style="border-collapse: separate; border-spacing: 5px; height:100%; width:100%;">
 			<tr ng-repeat="row in gridViewModel.grid.rows">
-				<td ng-repeat="cell in row" style="height:{{ 100 / gridViewModel.grid.rows.length }}%;">
-					<a class="btn" style="font-size:6vw; vertical-align:middle; height:100%; width:100%;" ng-class="cell.completed ? 'btn-success' : 'btn-primary'" ng-click="gridViewModel.onCellClicked(cell)">{{cell.Value}}</a>
+				<td ng-repeat="cell in row" style="height:{{ 100 / gridViewModel.grid.rows.length }}%; width:{{ 100 / row.length }}%;">
+					<a class="btn gameValueText" style="height:100%; width:100%;" ng-class="cell.completed ? 'btn-success' : 'btn-primary'" ng-click="gridViewModel.onCellClicked(cell)">{{cell.Value}}</a>
 				</td>
 			</tr>
 		</table>

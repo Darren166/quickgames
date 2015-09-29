@@ -1,11 +1,45 @@
-﻿html, body { height: 100%; margin: 0; padding: 0; }
+﻿html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 
 /* Essentials */
-.gameWindow { display: table; }
-.gameContent { display: table-row; height: 100%; }
-.gameContentBody { display: table-cell; }
+.gameWindow {
+	display: table;
+}
 
-/* Aestetics */
-.gameWindow { width: 100%; height: 100%; }
-.gameHeader, .gameFooter { padding: 10px 20px; background: #f7f7f7; }
-.gameContentBody { padding: 20px; background: #e7e7e7; }
+.gameContent {
+	display: table-row;
+	height: 100%;
+}
+
+.gameContentBody {
+	display: table-cell;
+}
+
+/* Aesthetics */
+.gameWindow {
+	width: 100%;
+	height: 100%;
+}
+
+.gameHeader, .gameFooter {
+	padding: 10px 20px;
+	background: #f7f7f7;
+}
+
+.gameContentBody {
+	padding: 20px;
+	background: #e7e7e7;
+}
+
+.gameValueText {
+		font-size: 4vw;
+}
+
+@media only screen and (max-width: 1020px) {
+	.gameValueText {
+		font-size: 7vw;
+	}
+}
