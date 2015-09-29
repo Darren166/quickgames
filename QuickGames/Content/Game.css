@@ -34,12 +34,22 @@
 	background: #e7e7e7;
 }
 
-.gameValueText {
-		font-size: 4vw;
+.gameGrid {
+	width: 100%;
+	height: 100%;
+	border-spacing: 6px;
+	border-collapse: separate;
+}
+
+.gameCell {
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 25px;
+	font-size: 4vw;
 }
 
 @media only screen and (max-width: 1020px) {
-	.gameValueText {
+	.gameCell {
 		font-size: 7vw;
 	}
 }

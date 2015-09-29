@@ -5,10 +5,10 @@
 		<cg-timer milliseconds-since-start="gridViewModel.elapsedTime" run-timer="gridViewModel.gameInProgress"></cg-timer>
 	</div>
 	<div style="height:80%;">
-		<table style="border-collapse: separate; border-spacing: 5px; height:100%; width:100%;">
+		<table class="gameGrid">
 			<tr ng-repeat="row in gridViewModel.grid.rows">
-				<td ng-repeat="cell in row" style="height:{{ 100 / gridViewModel.grid.rows.length }}%; width:{{ 100 / row.length }}%;">
-					<a class="btn gameValueText" style="height:100%; width:100%;" ng-class="cell.completed ? 'btn-success' : 'btn-primary'" ng-click="gridViewModel.onCellClicked(cell)">{{cell.Value}}</a>
+				<td ng-repeat="cell in row" style="height:{{ 100 / gridViewModel.grid.rows.length }}%; width:{{ 100 / row.length }}%;" class="gameCell" ng-click="gridViewModel.onCellClicked(cell)" ng-class="cell.completed ? 'btn-success' : 'btn-primary'">
+					{{cell.Value}}
 				</td>
 			</tr>
 		</table>
